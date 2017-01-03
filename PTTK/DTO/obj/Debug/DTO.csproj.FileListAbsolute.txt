@@ -1,0 +1,5 @@
+D:\NOW\PTTK HTTT\DACK\PTTK\DTO\bin\Debug\DTO.dll
+D:\NOW\PTTK HTTT\DACK\PTTK\DTO\bin\Debug\DTO.pdb
+D:\NOW\PTTK HTTT\DACK\PTTK\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache
+D:\NOW\PTTK HTTT\DACK\PTTK\DTO\obj\Debug\DTO.dll
+D:\NOW\PTTK HTTT\DACK\PTTK\DTO\obj\Debug\DTO.pdb

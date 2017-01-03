@@ -1,0 +1,15 @@
+D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\bin\Debug\DOAN.exe.config
+D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\bin\Debug\DOAN.exe
+D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\bin\Debug\DOAN.pdb
+D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\bin\Debug\BUS.dll
+D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\bin\Debug\DTO.dll
+D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\bin\Debug\DAL.dll
+D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\bin\Debug\BUS.pdb
+D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\bin\Debug\DTO.pdb
+D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\bin\Debug\DAL.pdb
+D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\obj\Debug\DOAN.csprojResolveAssemblyReference.cache
+D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\obj\Debug\DOAN.Form1.resources
+D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\obj\Debug\DOAN.Properties.Resources.resources
+D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\obj\Debug\DOAN.csproj.GenerateResource.Cache
+D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\obj\Debug\DOAN.exe
+D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\obj\Debug\DOAN.pdb
