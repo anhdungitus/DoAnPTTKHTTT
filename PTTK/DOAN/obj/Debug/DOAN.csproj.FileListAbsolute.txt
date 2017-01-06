@@ -13,3 +13,6 @@ D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\obj\Debug\DOAN.Properties.Resources.resources
 D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\obj\Debug\DOAN.csproj.GenerateResource.Cache
 D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\obj\Debug\DOAN.exe
 D:\NOW\PTTK HTTT\DACK\PTTK\DOAN\obj\Debug\DOAN.pdb
+D:\NOW\PTTK HTTT\DoAnPTTKHTTT\PTTK\DOAN\bin\Debug\DOAN.exe.config
+D:\NOW\PTTK HTTT\DoAnPTTKHTTT\PTTK\DOAN\obj\Debug\DOAN.exe
+D:\NOW\PTTK HTTT\DoAnPTTKHTTT\PTTK\DOAN\obj\Debug\DOAN.pdb

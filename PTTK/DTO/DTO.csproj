@@ -39,8 +39,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CongTyDTO.cs" />
+    <Compile Include="CT_GiaoHangDTO.cs" />
+    <Compile Include="DonDacHangDTO.cs" />
+    <Compile Include="HopDongDTO.cs" />
+    <Compile Include="KhachHangDTO.cs" />
+    <Compile Include="KhuyenMaiDTO.cs" />
+    <Compile Include="LichSuaChuaDTO.cs" />
+    <Compile Include="NhaCC_TBDTO.cs" />
+    <Compile Include="NhaCungCapDTO.cs" />
+    <Compile Include="PhieuGiaoHangDTO.cs" />
     <Compile Include="ProductDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SanPhamMuaDTO.cs" />
+    <Compile Include="ThietBiDTO.cs" />
+    <Compile Include="ThietBiThueDTO.cs" />
+    <Compile Include="TTNhanHangDTO.cs" />
+    <Compile Include="TTThietBiDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
