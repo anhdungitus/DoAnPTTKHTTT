@@ -54,21 +54,21 @@ CREATE TABLE ThietBi
 (
 	MaTB CHAR (10),
 	Ten NVARCHAR (50),
+	LaNuoc BIT,
 	SLKho INT,	
 	CONSTRAINT pk_ThietBi PRIMARY KEY (MaTB)
 )
-INSERT INTO ThietBi (MaTB, Ten, SLKho) VALUES
-	('1', N'Bình 19L có vòi', 0),
-	('2', N'Bình 19L không vòi', 0),
-	('3', N'Bình 12L có vòi', 0),
-	('4', N'Bình 12L không vòi', 0),
-	('5', N'Chai 1L', 0),
-	('6', N'Chai 500ML', 0),
-	('7', N'Bình sứ', 0),
-	('8', N'Giá đỡ bình (cao)', 0),
-	('9', N'Giá đỡ bình (thấp)', 0),
-	('10', N'Máy nóng lạnh', 0);
-
+INSERT INTO ThietBi (MaTB, Ten, SLKho, LaNuoc) VALUES
+	('1', N'Bình 19L có vòi', 0, 1),
+	('2', N'Bình 19L không vòi', 0, 1),
+	('3', N'Bình 12L có vòi', 0, 1),
+	('4', N'Bình 12L không vòi', 0, 1),
+	('5', N'Chai 1L', 0, 1),
+	('6', N'Chai 500ML', 0, 1),
+	('7', N'Bình sứ', 0, 0),
+	('8', N'Giá đỡ bình (cao)', 0, 0),
+	('9', N'Giá đỡ bình (thấp)', 0, 0),
+	('10', N'Máy nóng lạnh', 0, 0);
 
 CREATE TABLE TTThietBi
 (
