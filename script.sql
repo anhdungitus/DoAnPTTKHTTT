@@ -92,20 +92,32 @@ CREATE TABLE HopDong
 	CONSTRAINT pk_HopDong PRIMARY KEY (MaHD)
 )
 ALTER TABLE HopDong ADD CONSTRAINT fk_MaKH_HD FOREIGN KEY (MaKH) REFERENCES KhachHang(MaKH)
+INSERT INTO [dbo].[HopDong] ([MaHD] ,[MaKH] ,[ThoiGianDinhKi] , [PTThanhToan], [TinhTrang]) VALUES
+           ('1', '1', 0, 0, 1),
+		   ('2', '2', 0, 0, 1),
+		   ('3', '3', 0, 0, 1);
+GO
 
 CREATE TABLE ThietBiThue
 (
 	MaHD CHAR (10),
 	MaTB CHAR (10),
+	SLuong INT,
 	KhoanKyQuy INT,
 	GiaThue INT,
-	ThoiGianThue INT,
+	ThoiGianThue INT, -- thang
 	TGLapDat DATE,
 	CONSTRAINT pk_TBThue PRIMARY KEY (MaHD, MaTB)
 )
 ALTER TABLE ThietBiThue ADD CONSTRAINT fk_TBT_HD FOREIGN KEY (MaHD) REFERENCES HopDong(MaHD)
 ALTER TABLE ThietBiThue ADD CONSTRAINT fk_MaTB_HD FOREIGN KEY (MaTB) REFERENCES ThietBi(MaTB)
-
+INSERT INTO [dbo].[ThietBiThue]([MaHD],[MaTB], [SLuong],[KhoanKyQuy],[GiaThue],[ThoiGianThue] ,[TGLapDat]) VALUES
+           ('1' ,'7', 1, 1200000, 600000, 12, '1/13/2017'),
+		   ('2' ,'7', 2, 1200000, 600000, 12, '1/13/2017'),
+		   ('2' ,'9', 2, 1000000, 650000, 12, '1/13/2017'),
+		   ('3' ,'10', 3, 1290000, 100000, 12, '1/13/2017'),
+		   ('1' ,'8', 4, 2200000, 700000, 12, '1/13/2017');
+GO
 
 CREATE TABLE SanPhamMua
 (
@@ -117,6 +129,10 @@ CREATE TABLE SanPhamMua
 )
 ALTER TABLE SanPhamMua ADD CONSTRAINT fk_SPM_HD FOREIGN KEY (MaHD) REFERENCES HopDong(MaHD)
 ALTER TABLE SanPhamMua ADD CONSTRAINT fk_SPM_TB FOREIGN KEY (MaTB) REFERENCES ThietBi(MaTB)
+INSERT INTO [dbo].[SanPhamMua]([MaHD],[MaTB],[SLuong],[DonGia]) VALUES
+           ('3','1', 100, 15000),
+		   ('3','2', 1000, 14000);
+GO
 
 CREATE TABLE PhieuGiaoHang
 (
@@ -133,6 +149,11 @@ CREATE TABLE PhieuGiaoHang
 	CONSTRAINT pk_PhieuGH PRIMARY KEY (MaPhieu)
 )
 ALTER TABLE PhieuGiaoHang ADD CONSTRAINT fk_PGH_HD FOREIGN KEY (MaHD) REFERENCES HopDong(MaHD)
+INSERT INTO [dbo].[PhieuGiaoHang]([MaPhieu],[MaHD] ,[TuyenDuong],[NgayGiao] ,[DiaChi] ,[NVGiao] ,[Thue],[TienNhan], [No]) VALUES
+           ('1', '1', N'Duong 1', '1/10/2017', N'DC 1', 'NV1', 100000 , 500000, 0),
+		   ('2', '2', N'Duong 2', '1/10/2017', N'DC 2', 'NV1', 100000 , 500000, 0),
+		   ('3', '3', N'Duong 3', '1/10/2017', N'DC 3', 'NV1', 100000 , 500000, 0);
+GO
 
 
 CREATE TABLE CT_GiaoHang
@@ -144,10 +165,16 @@ CREATE TABLE CT_GiaoHang
 	SoTien FLOAT,
 	NgayLap DATE,
 	NgayThuHoi DATE,
-	--CONSTRAINT pk_PhieuGH PRIMARY KEY (MaPhieu)
+	--CONSTRAINT pk_CTGH PRIMARY KEY (MaPGH, MaTB)
 )
-
-
+ALTER TABLE CT_GiaoHang ADD CONSTRAINT fk_PGH_CT FOREIGN KEY (MaPGH) REFERENCES PhieuGiaoHang(MaPhieu)
+INSERT INTO [dbo].[CT_GiaoHang]([MaPGH],[MaTB],[SLDaGiao],[DonGia],[SoTien],[NgayLap],[NgayThuHoi]) VALUES
+           ('3', '1' , 50, 15000, 750000, '1/7/2017',null),
+		   ('3', '1' , 50, 15000, 150000, '1/8/2017',null),
+		   ('1', '7' , 1, 1200000, 1200000, '1/7/2017',null),
+		   ('2', '9' , 1, 1000000, 500000, '1/7/2017',null),
+		   ('3', '2' , 1, 14000, 980000, '1/7/2017',null);
+GO
 
 CREATE TABLE NhaCungCap
 (
