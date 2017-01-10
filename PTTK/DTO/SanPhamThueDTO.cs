@@ -1,7 +1,7 @@
 ﻿using System;
 namespace DTO
 {
-    public class ThietBiThueDTO
+    public class SanPhamThueDTO
     {
         public string MaHD { get; set; }
         public string MaTB { get; set; }

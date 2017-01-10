@@ -8,5 +8,7 @@ namespace DTO
         public string NhaSX { get; set; }
         public DateTime NgaySX { get; set; }
         public string NoiSX { get; set; }
+        public bool ChuaNuoc { get; set; }
+        public bool TrongKho { get; set; }
     }
 }
