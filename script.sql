@@ -156,15 +156,16 @@ CREATE TABLE CT_GiaoHang
 	SoTien INT,
 	NgayLap DATE,
 	NgayThuHoi DATE,
+	NVGiao	NVARCHAR (30)
 	--CONSTRAINT pk_CTGH PRIMARY KEY (MaPGH, MaTB)
 )
 ALTER TABLE CT_GiaoHang ADD CONSTRAINT fk_PGH_CT FOREIGN KEY (MaHD) REFERENCES HopDong(MaHD)
-INSERT INTO [dbo].[CT_GiaoHang]([MaHD],[MaTB],[SLDaGiao],[DonGia],[SoTien],[NgayLap],[NgayThuHoi]) VALUES
-           ('3', '1' , 50, 15000, 750000, '1/7/2017',null),
-		   ('3', '1' , 50, 15000, 150000, '1/8/2017',null),
-		   ('1', '7' , 1, null, 1200000, '1/7/2017',null),
-		   ('2', '7' , 1, null, 1200000, '1/7/2017',null),
-		   ('3', '2' , 500, 14000, 7000000, '1/7/2017',null);
+INSERT INTO [dbo].[CT_GiaoHang]([MaHD],[MaTB],[SLDaGiao],[DonGia],[SoTien],[NgayLap],[NgayThuHoi], NVGiao) VALUES
+           ('3', '1' , 50, 15000, 750000, '1/7/2017',null, 'NV1'),
+		   ('3', '1' , 50, 15000, 150000, '1/8/2017',null, 'NV1'),
+		   ('1', '7' , 1, null, 1200000, '1/7/2017',null, 'NV1'),
+		   ('2', '7' , 1, null, 1200000, '1/7/2017',null, 'NV1'),
+		   ('3', '2' , 500, 14000, 7000000, '1/7/2017',null, 'NV1');
 GO
 
 CREATE TABLE NhaCungCap
@@ -257,7 +258,7 @@ CREATE TABLE LichSuaChua
 	MaTB CHAR (10),
 	MaHD CHAR (10),
 	NoiDungSua NVARCHAR (200),
-	TienSua FLOAT,
+	TienSua INT,
 	CONSTRAINT pk_LichSua PRIMARY KEY (MaTB, MaHD)
 )
 
