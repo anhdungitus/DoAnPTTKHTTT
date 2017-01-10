@@ -54,21 +54,24 @@ CREATE TABLE ThietBi
 (
 	MaTB CHAR (10),
 	Ten NVARCHAR (50),
-	LaBinhNuoc BIT, --Thiết bị này có phải là bình nước hay không:{1: phải; 0: Không}
+	LoaiThietBi INT, --{0: bình chứa nước; 1: bình nước rỗng; 3: thiết bị liên quan}
 	SLKho INT,
 	CONSTRAINT pk_ThietBi PRIMARY KEY (MaTB)
 )
-INSERT INTO ThietBi (MaTB, Ten, SLKho, LaBinhNuoc) VALUES
+INSERT INTO ThietBi (MaTB, Ten, SLKho, LoaiThietBi) VALUES
 	('1', N'Bình 19L có vòi', 1000, 1),
-	('2', N'Bình 19L không vòi', 900, 1),
+	('2', N'Bình 19L không vòi', 500, 1),
 	('3', N'Bình 12L có vòi', 800, 1),
 	('4', N'Bình 12L không vòi', 860, 1),
 	('5', N'Chai 1L', 690, 1),
 	('6', N'Chai 500ML', 999, 1),
-	('7', N'Bình sứ', 500, 0),
-	('8', N'Giá đỡ bình (cao)', 200, 0),
-	('9', N'Giá đỡ bình (thấp)', 200, 0),
-	('10', N'Máy nóng lạnh', 100, 0);
+	('7', N'Bình sứ', 500, 3),
+	('8', N'Giá đỡ bình (cao)', 200, 3),
+	('9', N'Giá đỡ bình (thấp)', 200, 3),
+	('10', N'Máy nóng lạnh', 100, 3),
+	('11', N'Bình nước 19L không vòi', 150, 0),
+	('12', N'Bình nước 12L có vòi', 800, 0),
+	('13', N'Bình nước 12L không vòi', 860, 0);
 
 CREATE TABLE TTThietBi
 (
@@ -77,7 +80,6 @@ CREATE TABLE TTThietBi
 	NhaSX NVARCHAR (150),
 	NgaySX DATE,
 	NoiSX NVARCHAR (150),
-	ChuaNuoc BIT,--nếu là bình nước thì bình đó đã đựng nước hay chưa: {1: có; 0: chưa}
 	TrongKho BIT, --0: sản phẩm này không còn trong kho; 1:hiện đagn có trong kho
 	CONSTRAINT pk_TTThietBi PRIMARY KEY (MaTB, Serial)
 )
@@ -122,11 +124,12 @@ CREATE TABLE SanPhamThue
 ALTER TABLE SanPhamThue ADD CONSTRAINT fk_TBT_HD FOREIGN KEY (MaHD) REFERENCES HopDong(MaHD)
 ALTER TABLE SanPhamThue ADD CONSTRAINT fk_MaTB_HD FOREIGN KEY (MaTB) REFERENCES ThietBi(MaTB)
 INSERT INTO [dbo].SanPhamThue([MaHD],[MaTB], [SLuong],[KhoanKyQuy],[GiaThue],[ThoiGianThue] ,[TGLapDat]) VALUES
+			('1' ,'8', 4, 2200000, 700000, 12, '1/13/2017'),
            ('1' ,'7', 1, 1200000, 600000, 12, '1/13/2017'),
 		   ('2' ,'7', 2, 1200000, 600000, 12, '1/13/2017'),
 		   ('2' ,'9', 2, 1000000, 650000, 12, '1/13/2017'),
 		   ('3' ,'10', 3, 1290000, 100000, 12, '1/13/2017'),
-		   ('1' ,'8', 4, 2200000, 700000, 12, '1/13/2017');
+		   ('3' ,'2', 10, 430000, 430000, 12, '1/13/2017');
 GO
 
 CREATE TABLE SanPhamMua
@@ -135,15 +138,17 @@ CREATE TABLE SanPhamMua
 	MaTB CHAR (10),
 	SLuong INT,
 	DonGia INT,
-	LaNuoc BIT,--mua sản phảm là nước {1: phải; 0: không}
 	CONSTRAINT pk_SPMua PRIMARY KEY (MaHD, MaTB)
 )
 ALTER TABLE SanPhamMua ADD CONSTRAINT fk_SPM_HD FOREIGN KEY (MaHD) REFERENCES HopDong(MaHD)
 ALTER TABLE SanPhamMua ADD CONSTRAINT fk_SPM_TB FOREIGN KEY (MaTB) REFERENCES ThietBi(MaTB)
-INSERT INTO [dbo].[SanPhamMua]([MaHD],[MaTB],[SLuong],[DonGia], [LaNuoc]) VALUES
-           ('3','1', 100, 15000, 1),
-		   ('3','2', 1000, 14000, 0),
-		   ('3','9', 1, 2500000, null);
+INSERT INTO [dbo].[SanPhamMua]([MaHD],[MaTB],[SLuong],[DonGia]) VALUES
+			('1','2', 100, 15000),
+			('1','11', 100, 20000),
+			('2','11', 100, 20000),
+           ('3','1', 100, 15000),
+		   ('3','2', 495, 14000),
+		   ('3','9', 1, 2500000);
 GO
 
 
@@ -156,16 +161,19 @@ CREATE TABLE CT_GiaoHang
 	SoTien INT,
 	NgayLap DATE,
 	NgayThuHoi DATE,
-	NVGiao	NVARCHAR (30)
+	NVGiao	NVARCHAR (30),
+	LoaiDatHang BIT --{0: sản phẩm thuê; 1: sản phẩm mua}
 	--CONSTRAINT pk_CTGH PRIMARY KEY (MaPGH, MaTB)
 )
 ALTER TABLE CT_GiaoHang ADD CONSTRAINT fk_PGH_CT FOREIGN KEY (MaHD) REFERENCES HopDong(MaHD)
-INSERT INTO [dbo].[CT_GiaoHang]([MaHD],[MaTB],[SLDaGiao],[DonGia],[SoTien],[NgayLap],[NgayThuHoi], NVGiao) VALUES
-           ('3', '1' , 50, 15000, 750000, '1/7/2017',null, 'NV1'),
-		   ('3', '1' , 50, 15000, 150000, '1/8/2017',null, 'NV1'),
-		   ('1', '7' , 1, null, 1200000, '1/7/2017',null, 'NV1'),
-		   ('2', '7' , 1, null, 1200000, '1/7/2017',null, 'NV1'),
-		   ('3', '2' , 500, 14000, 7000000, '1/7/2017',null, 'NV1');
+INSERT INTO [dbo].[CT_GiaoHang]([MaHD],[MaTB],[SLDaGiao],[DonGia],[SoTien],[NgayLap],[NgayThuHoi], NVGiao, LoaiDatHang) VALUES
+			('1', '2' , 50, null, 15000, '1/7/2017',null, 'NV2', 1),
+		   ('1', '7' , 1, null, 1200000, '1/7/2017',null, 'NV1', 0),
+		   ('2', '7' , 1, null, 1200000, '1/7/2017',null, 'NV1', 0),
+		   ('3', '2' , 5, 14000, 7000000, '1/7/2017',null, 'NV1', 1),
+		   ('3', '2' , 3, 14000, 7000000, '1/7/2017',null, 'NV1', 0),
+		   ('3', '1' , 40, 15000, 750000, '1/7/2017',null, 'NV1', 1),
+		   ('3', '1' , 40, 15000, 150000, '1/8/2017',null, 'NV1', 1);
 GO
 
 CREATE TABLE NhaCungCap
