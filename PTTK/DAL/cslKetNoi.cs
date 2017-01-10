@@ -75,5 +75,10 @@ namespace DAL
             command = new SqlCommand(sqlString, connection);
             return command.ExecuteScalar();
         }
+
+        public void closeConnect()
+        {
+            connection.Close();
+        }
     }
 }
