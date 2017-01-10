@@ -5,5 +5,6 @@
         public string MaTB { get; set; }
         public string Ten { get; set; }
         public int SLKho { get; set; }
+        public bool LaBinhNuoc { get; set; }
     }
 }
