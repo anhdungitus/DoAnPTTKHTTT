@@ -6,6 +6,5 @@
         public string MaTB { get; set; }
         public int SLuong { get; set; }
         public int DonGia { get; set; } //Why float 
-        public bool LaNuoc { get; set; }
     }
 }

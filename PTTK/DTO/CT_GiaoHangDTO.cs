@@ -12,5 +12,6 @@ namespace DTO
         public DateTime NgayLap{ get; set; }
         public DateTime NgayThuHoi { get; set; }
         public string NVGiao { get; set; }
+        public bool LoaiDatHang { get; set; }
     }
 }
