@@ -2,6 +2,7 @@
 {
     public class DonDacHangDTO
     {
+        public string MaDDH { get; set; }
         public string MaNCC { get; set; }
         public string MaTB { get; set; }
         public int SLuong { get; set; }
