@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ThongKeKinhDoanh" targetNamespace="http://tempuri.org/ThongKeKinhDoanh.xsd" xmlns:mstns="http://tempuri.org/ThongKeKinhDoanh.xsd" xmlns="http://tempuri.org/ThongKeKinhDoanh.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="WATERConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="WATERConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DOAN.Properties.Settings.GlobalReference.Default.WATERConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTableTKKDTableAdapter" GeneratorDataComponentClassName="DataTableTKKDTableAdapter" Name="DataTableTKKD" UserDataComponentName="DataTableTKKDTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="WATERConnectionString (Settings)" DbObjectName="WATER.dbo.ThietBi" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT TB.MaTB, TB.Ten, TB.LoaiThietBi, (TT.SLThieu-TB.SLKho) AS SLThieu
+FROM ThietBi TB, (SELECT T.MaTB, SUM(SLThieu) AS SLThieu
+		FROM (SELECT *	FROM (SELECT T1.MaTB, SUM(SPM.SLuong - SLDaGiao) AS SLThieu
+		FROM (SELECT MaHD, MaTB, SUM(SLDaGiao) SLDaGiao
+		FROM CT_GiaoHang CTG
+		GROUP BY MAHD, MaTB) AS T1, SanPhamMua SPM
+		WHERE SPM.MaHD = T1.MaHD AND SPM.MaTB = T1.MaTB AND SLDaGiao &lt; SPM.SLuong
+		GROUP BY T1.MaTB) G1 UNION ALL SELECT * FROM (SELECT T1.MaTB, SUM(SPT.SLuong - SLDaGiao) AS SLThieu
+								FROM (SELECT MaHD, MaTB, SUM(SLDaGiao) SLDaGiao
+										FROM CT_GiaoHang CTG
+										GROUP BY MAHD, MaTB) AS T1, SanPhamThue SPT
+								WHERE SPT.MaHD = T1.MaHD AND SPT.MaTB = T1.MaTB AND SLDaGiao &lt; SPT.SLuong
+								GROUP BY T1.MaTB) G2) AS T
+GROUP BY T.MaTB) AS TT
+WHERE TB.MaTB = TT.MaTB AND SLKho &lt; TT.SLThieu</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaTB" DataSetColumn="MaTB" />
+              <Mapping SourceColumn="Ten" DataSetColumn="Ten" />
+              <Mapping SourceColumn="SLThieu" DataSetColumn="SLThieu" />
+              <Mapping SourceColumn="LoaiThietBi" DataSetColumn="LoaiThietBi" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ThongKeKinhDoanh" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ThongKeKinhDoanh" msprop:Generator_UserDSName="ThongKeKinhDoanh">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTableTKKD" msprop:Generator_TableClassName="DataTableTKKDDataTable" msprop:Generator_TableVarName="tableDataTableTKKD" msprop:Generator_RowChangedName="DataTableTKKDRowChanged" msprop:Generator_TablePropName="DataTableTKKD" msprop:Generator_RowDeletingName="DataTableTKKDRowDeleting" msprop:Generator_RowChangingName="DataTableTKKDRowChanging" msprop:Generator_RowEvHandlerName="DataTableTKKDRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTableTKKDRowDeleted" msprop:Generator_RowClassName="DataTableTKKDRow" msprop:Generator_UserTableName="DataTableTKKD" msprop:Generator_RowEvArgName="DataTableTKKDRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaTB" msprop:Generator_ColumnVarNameInTable="columnMaTB" msprop:Generator_ColumnPropNameInRow="MaTB" msprop:Generator_ColumnPropNameInTable="MaTBColumn" msprop:Generator_UserColumnName="MaTB">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Ten" msprop:Generator_ColumnVarNameInTable="columnTen" msprop:Generator_ColumnPropNameInRow="Ten" msprop:Generator_ColumnPropNameInTable="TenColumn" msprop:Generator_UserColumnName="Ten" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLThieu" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSLThieu" msprop:Generator_ColumnPropNameInRow="SLThieu" msprop:Generator_ColumnPropNameInTable="SLThieuColumn" msprop:Generator_UserColumnName="SLThieu" type="xs:int" minOccurs="0" />
+              <xs:element name="LoaiThietBi" msprop:Generator_ColumnVarNameInTable="columnLoaiThietBi" msprop:Generator_ColumnPropNameInRow="LoaiThietBi" msprop:Generator_ColumnPropNameInTable="LoaiThietBiColumn" msprop:Generator_UserColumnName="LoaiThietBi" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DataTableTKKD" />
+      <xs:field xpath="mstns:MaTB" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
