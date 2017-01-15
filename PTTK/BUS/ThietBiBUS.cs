@@ -16,7 +16,7 @@ namespace BUS
                                                MaTB = Convert.ToString(x["MaTB"]).Trim(),
                                                Ten = Convert.ToString(x["Ten"]),
                                                SLKho = Convert.ToInt32(x["SLKho"]),
-                                               LaBinhNuoc = Convert.ToBoolean(x["LaNuoc"])
+                                               LoaiThietBi = Convert.ToInt32(x["LoaiThietBi"])
                                            }).ToList();
             
 

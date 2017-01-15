@@ -20,7 +20,7 @@ namespace DAL
         public clsKetNoi()
         {
             //string databasePath = Directory.GetCurrentDirectory();
-            connection.ConnectionString = @"Data Source=(local);Initial Catalog=STORE_PROD;User ID=sa;Password=sa123;";
+            connection.ConnectionString = @"Data Source=w32.hopto.org;Initial Catalog=WATER;Persist Security Info=True;User ID=sa; Password=sa";
             //connection.ConnectionString = "Data Source=(local);Initial Catalog=QUANLYHOCSINH;Integrated Security=True";
             if (connection.State == ConnectionState.Closed)
             {

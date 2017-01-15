@@ -8,5 +8,6 @@
         public string MaVAT { get; set; }
         public int GTGT { get; set; }
         public string NguoiDaiDien { get; set; }
+        public string SDT { get; set; }
     }
 }

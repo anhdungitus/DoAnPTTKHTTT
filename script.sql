@@ -33,21 +33,22 @@ CREATE TABLE CongTy
 	MaCT CHAR (10),
 	Ten NVARCHAR (150),
 	DiaChi NVARCHAR (100),
+	SDT VARCHAR (12),
 	MaVAT VARCHAR (30),
 	GTGT INT,
 	NguoiDaiDien CHAR (10),	
 	CONSTRAINT pk_CT PRIMARY KEY (MaCT)
 )
 ALTER TABLE CongTy ADD CONSTRAINT fk_NDD_KH FOREIGN KEY (NguoiDaiDien) REFERENCES KhachHang(MaKH)
-INSERT INTO CongTy (MaCT, Ten, DiaChi, MaVAT, GTGT, NguoiDaiDien) VALUES
-	('1', N'CÔNG TY TNHH SẢN XUẤT XÂY DỰNG VÀ THƯƠNG MẠI FIVE D', N'502/55/38 Huỳnh Tấn Phát, Phường Bình Thuận, Quận 7, TP Hồ Chí Minh', '56456', 10, '1'),
-	('2', N'CÔNG TY TNHH ĐẦU TƯ SENTOSA', N'Phòng 8.6 - Tầng 8 Tòa nhà Le Meridien, Số 3C Tôn Đức Thắng, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh', '657643', 10, '2'),
-	('3', N'CÔNG TY TNHH SHINWA', N'750/72 Điện Biên Phủ, Phường 10, Quận 10, TP Hồ Chí Minh', '345345', 10, '3'),
-	('4', N'CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ MỘT THÀNH VIÊN CÁT THIÊN AN', N'Số 11, Đường D3, Phường 25, Quận Bình Thạnh, TP Hồ Chí Minh', '76686', 10, '4'),
-	('5', N'CÔNG TY TNHH MỘT THÀNH VIÊN PINK VELVET', N'9 Nguyễn Minh Hoàng, Phường 12, Quận Tân Bình, TP Hồ Chí Minh', '23421', 10, '5'),
-	('6', N'CÔNG TY CỔ PHẦN ĐẦU TƯ XÂY DỰNG DẦU KHÍ TÂN DUY ANH', N'Số 20 đường số 2, Phường Tân Phú, Quận 7, TP Hồ Chí Minh', '12234', 10, '6'),
-	('7', N'CÔNG TY TNHH MENSCH', N'245/9 Hòa Hảo, Phường 02, Quận 10, TP Hồ Chí Minh', '86542', 10, '7'),
-	('8', N'CÔNG TY TNHH DỊCH VỤ PHÚC THIỆN', N'35/5E, ấp 1, Xã Xuân Thới Thượng, Huyện Hóc Môn, TP Hồ Chí Minh', '24356', 10, '8');
+INSERT INTO CongTy (MaCT, Ten, DiaChi, MaVAT, GTGT, NguoiDaiDien, SDT) VALUES
+	('1', N'CÔNG TY TNHH SẢN XUẤT XÂY DỰNG VÀ THƯƠNG MẠI FIVE D', N'502/55/38 Huỳnh Tấn Phát, Phường Bình Thuận, Quận 7, TP Hồ Chí Minh', '56456', 10, '1', '2342342253'),
+	('2', N'CÔNG TY TNHH ĐẦU TƯ SENTOSA', N'Phòng 8.6 - Tầng 8 Tòa nhà Le Meridien, Số 3C Tôn Đức Thắng, Phường Bến Nghé, Quận 1, TP Hồ Chí Minh', '657643', 10, '2', '34467543'),
+	('3', N'CÔNG TY TNHH SHINWA', N'750/72 Điện Biên Phủ, Phường 10, Quận 10, TP Hồ Chí Minh', '345345', 10, '3', '23435454'),
+	('4', N'CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ MỘT THÀNH VIÊN CÁT THIÊN AN', N'Số 11, Đường D3, Phường 25, Quận Bình Thạnh, TP Hồ Chí Minh', '76686', 10, '4', '2367565'),
+	('5', N'CÔNG TY TNHH MỘT THÀNH VIÊN PINK VELVET', N'9 Nguyễn Minh Hoàng, Phường 12, Quận Tân Bình, TP Hồ Chí Minh', '23421', 10, '5', '4564567'),
+	('6', N'CÔNG TY CỔ PHẦN ĐẦU TƯ XÂY DỰNG DẦU KHÍ TÂN DUY ANH', N'Số 20 đường số 2, Phường Tân Phú, Quận 7, TP Hồ Chí Minh', '12234', 10, '6', '467567'),
+	('7', N'CÔNG TY TNHH MENSCH', N'245/9 Hòa Hảo, Phường 02, Quận 10, TP Hồ Chí Minh', '86542', 10, '7', '3546776787'),
+	('8', N'CÔNG TY TNHH DỊCH VỤ PHÚC THIỆN', N'35/5E, ấp 1, Xã Xuân Thới Thượng, Huyện Hóc Môn, TP Hồ Chí Minh', '24356', 10, '8', '235466767');
 
 
 CREATE TABLE ThietBi
@@ -138,10 +139,12 @@ CREATE TABLE SanPhamMua
 	MaTB CHAR (10),
 	SLuong INT,
 	DonGia INT,
+	MaKM char (10),
 	CONSTRAINT pk_SPMua PRIMARY KEY (MaHD, MaTB)
 )
 ALTER TABLE SanPhamMua ADD CONSTRAINT fk_SPM_HD FOREIGN KEY (MaHD) REFERENCES HopDong(MaHD)
 ALTER TABLE SanPhamMua ADD CONSTRAINT fk_SPM_TB FOREIGN KEY (MaTB) REFERENCES ThietBi(MaTB)
+ALTER TABLE SanPhamMua ADD CONSTRAINT fk_SPM_KM FOREIGN KEY (MaKM) REFERENCES KhuyenMai(MaKM)
 INSERT INTO [dbo].[SanPhamMua]([MaHD],[MaTB],[SLuong],[DonGia]) VALUES
 			('1','2', 100, 15000),
 			('1','11', 100, 20000),
