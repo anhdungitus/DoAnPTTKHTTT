@@ -8,7 +8,7 @@ namespace DAL
         public static DataTable DSThietBi ()
         {
             clsKetNoi cn = new clsKetNoi();
-            DataTable temp = cn.LoadData("SELECT * FROM ThietBi WHERE SLKho < 501");
+            DataTable temp = cn.LoadData("SELECT * FROM ThietBi");
             cn.closeConnect();
             return temp;
         }

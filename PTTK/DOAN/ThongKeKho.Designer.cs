@@ -1,6 +1,6 @@
 ﻿namespace DOAN
 {
-    partial class Home
+    partial class ThongKeKho
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.grvKho = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.grvKho)).BeginInit();
             this.SuspendLayout();
             // 
-            // Home
+            // grvKho
+            // 
+            this.grvKho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grvKho.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grvKho.Location = new System.Drawing.Point(0, 0);
+            this.grvKho.Name = "grvKho";
+            this.grvKho.Size = new System.Drawing.Size(685, 378);
+            this.grvKho.TabIndex = 0;
+            // 
+            // ThongKeKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(738, 493);
-            this.Name = "Home";
-            this.Text = "Phần mềm quản lý nhà máy nước";
+            this.ClientSize = new System.Drawing.Size(685, 378);
+            this.Controls.Add(this.grvKho);
+            this.Name = "ThongKeKho";
+            this.Text = "Thống kê kho";
+            this.Load += new System.EventHandler(this.ThongKeKho_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.grvKho)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView grvKho;
     }
 }
