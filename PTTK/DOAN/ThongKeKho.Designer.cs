@@ -35,17 +35,16 @@
             // grvKho
             // 
             this.grvKho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grvKho.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grvKho.Location = new System.Drawing.Point(0, 0);
+            this.grvKho.Location = new System.Drawing.Point(12, 73);
             this.grvKho.Name = "grvKho";
-            this.grvKho.Size = new System.Drawing.Size(685, 378);
+            this.grvKho.Size = new System.Drawing.Size(648, 150);
             this.grvKho.TabIndex = 0;
             // 
             // ThongKeKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(685, 378);
+            this.ClientSize = new System.Drawing.Size(810, 438);
             this.Controls.Add(this.grvKho);
             this.Name = "ThongKeKho";
             this.Text = "Thống kê kho";

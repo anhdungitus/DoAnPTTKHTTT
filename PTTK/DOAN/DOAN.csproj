@@ -51,8 +51,20 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="NhapThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhapThietBi.Designer.cs">
+      <DependentUpon>NhapThietBi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaoDonDatHangNhaCungCap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaoDonDatHangNhaCungCap.Designer.cs">
+      <DependentUpon>TaoDonDatHangNhaCungCap.cs</DependentUpon>
+    </Compile>
     <Compile Include="ThongKeKho.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +73,9 @@
     </Compile>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhapThietBi.resx">
+      <DependentUpon>NhapThietBi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -71,6 +86,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TaoDonDatHangNhaCungCap.resx">
+      <DependentUpon>TaoDonDatHangNhaCungCap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ThongKeKho.resx">
       <DependentUpon>ThongKeKho.cs</DependentUpon>
     </EmbeddedResource>

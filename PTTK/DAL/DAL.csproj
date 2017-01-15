@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cslKetNoi.cs" />
+    <Compile Include="DonDacHangDAL.cs" />
+    <Compile Include="NhaCC_ThietBiDAL.cs" />
     <Compile Include="ProductDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThietBiDAL.cs" />
